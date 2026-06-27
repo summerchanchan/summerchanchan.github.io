@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>summer.os — Xiayu Summer Chen</title>
+  <meta name="description" content="Xiayu Summer Chen — Assistant Professor, School of Social Work, UCF. Digital equity, healthy aging, and AI for social good." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Boot / launch screen ===== -->
+  <div class="boot" id="boot" role="button" tabindex="0" aria-label="Launch summer.os">
+    <div class="boot-monitor">
+      <div class="boot-screen">
+        <div class="boot-logo">🌻</div>
+        <h1 class="boot-title">summer.os</h1>
+        <p class="boot-ver">v1.0 — personal operating system</p>
+        <p class="boot-line"><span class="blink">●</span> system ready</p>
+        <button class="boot-btn" id="boot-btn">▶ LAUNCH</button>
+        <p class="boot-hint">click to boot · or press Enter</p>
+      </div>
+    </div>
+    <div class="boot-base"></div>
+  </div>
+
+  <!-- ===== Top menu bar ===== -->
+  <div class="menubar">
+    <div class="mb-left">
+      <span class="mb-logo">🌻</span>
+      <strong>summer.os</strong>
+      <span class="mb-sep">/</span>
+      <span class="mb-app" id="mb-active">terminal</span>
+    </div>
+    <div class="mb-right">
+      <span class="mb-net">◉ online</span>
+      <span id="clock">--:--</span>
+    </div>
+  </div>
+
+  <!-- ===== Desktop ===== -->
+  <main class="desktop" id="desktop">
+
+    <!-- ---- Terminal window ---- -->
+    <section class="window win-term" id="win-term" data-app="terminal" style="left:5vw; top:90px; width:min(560px, 90vw);">
+      <div class="window-bar">
+        <span class="tl"><i class="r"></i><i class="y"></i><i class="g"></i></span>
+        <span class="window-title">summer@os — ~/welcome</span>
+        <span class="bar-spacer"></span>
+      </div>
+      <div class="window-body term-body">
+        <pre id="term-out" class="term-out"></pre>
+        <div class="term-launch" id="term-launch" hidden>
+          <button class="lbtn" data-open="win-about">$ open about</button>
+          <button class="lbtn" data-open="win-research">$ open publications</button>
+          <button class="lbtn" data-open="win-design">$ open ai-design</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- About window ---- -->
+    <section class="window" id="win-about" data-app="about" style="right:5vw; top:120px; width:min(520px, 92vw);" hidden>
+      <div class="window-bar">
+        <span class="tl"><i class="r" data-close="win-about"></i><i class="y"></i><i class="g"></i></span>
+        <span class="window-title">01 — about.me</span>
+        <span class="bar-spacer"></span>
+      </div>
+      <div class="window-body">
+        <h2 class="win-h">$ whoami</h2>
+        <p>
+          <strong>Xiayu "Summer" Chen</strong> — Assistant Professor,
+          <strong>School of Social Work, University of Central Florida</strong>.
+          A trained oncology social worker working at the intersection of
+          <strong>gerontology, health disparities, and technology for social good</strong>.
+        </p>
+        <p>
+          My research centers on <strong>digital equity</strong> for diverse aging
+          populations: technology acceptance among older adults, culturally responsive
+          digital interventions, and <strong>AI-based conversational agents</strong>
+          that promote well-being and social inclusion for marginalized older adults.
+        </p>
+
+        <h3 class="win-sub">// education</h3>
+        <ul class="kv">
+          <li><span>Ph.D.</span> Social Work · Univ. of Illinois Urbana-Champaign</li>
+          <li><span>M.S.W.</span> New York University</li>
+          <li><span>B.S.</span> Psychology · Tsinghua University, China</li>
+        </ul>
+
+        <h3 class="win-sub">// research interests</h3>
+        <div class="tags">
+          <span>digital equity</span><span>healthy aging</span>
+          <span>AI conversational agents</span><span>health disparities</span>
+          <span>technology acceptance</span><span>cognitive health & caregiving</span>
+          <span>culturally responsive design</span>
+        </div>
+
+        <h3 class="win-sub">// memberships</h3>
+        <p class="muted">GSA · AGESW · SSWR</p>
+
+        <h3 class="win-sub">// contact</h3>
+        <p>
+          <a href="mailto:chen.xiayu@ucf.edu">chen.xiayu@ucf.edu</a> &nbsp;·&nbsp;
+          <a href="https://healthprofessions.ucf.edu/person/summer-chen/" target="_blank" rel="noopener">UCF faculty page ↗</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ---- Publications window ---- -->
+    <section class="window" id="win-research" data-app="publications" style="left:12vw; top:160px; width:min(640px, 94vw);" hidden>
+      <div class="window-bar">
+        <span class="tl"><i class="r" data-close="win-research"></i><i class="y"></i><i class="g"></i></span>
+        <span class="window-title">02 — publications.log</span>
+        <span class="bar-spacer"></span>
+      </div>
+      <div class="window-body">
+        <div class="scholar-stats">
+          <div class="stat"><b>226</b><span>citations</span></div>
+          <div class="stat"><b>9</b><span>h-index</span></div>
+          <div class="stat"><b>9</b><span>i10-index</span></div>
+          <a class="lbtn scholar-link" href="https://scholar.google.com/citations?hl=en&user=ELKdtu0AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">$ google-scholar ↗</a>
+        </div>
+        <div id="pub-list" class="pub-list"></div>
+      </div>
+    </section>
+
+    <!-- ---- AI Design window ---- -->
+    <section class="window" id="win-design" data-app="ai-design" style="right:10vw; top:200px; width:min(520px, 92vw);" hidden>
+      <div class="window-bar">
+        <span class="tl"><i class="r" data-close="win-design"></i><i class="y"></i><i class="g"></i></span>
+        <span class="window-title">03 — ai-design/</span>
+        <span class="bar-spacer"></span>
+      </div>
+      <div class="window-body">
+        <p class="muted">// AI-driven design experiments. More dropping soon. 🐕</p>
+        <div class="design-grid">
+          <article class="design-card placeholder"><div class="design-thumb">✨</div><h3>coming_soon_01</h3><p>your project here</p></article>
+          <article class="design-card placeholder"><div class="design-thumb">🎨</div><h3>coming_soon_02</h3><p>title · image · link</p></article>
+          <article class="design-card placeholder"><div class="design-thumb">🤖</div><h3>coming_soon_03</h3><p>a build / prototype</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Chat window ---- -->
+    <section class="window win-chat" id="win-chat" data-app="rumi" style="right:6vw; bottom:120px; width:min(360px, 92vw);" hidden>
+      <div class="window-bar chat-bar">
+        <span class="tl"><i class="r" data-close="win-chat"></i><i class="y"></i><i class="g"></i></span>
+        <span class="window-title">🐕 rumi — chat</span>
+        <span class="bar-spacer"></span>
+      </div>
+      <div class="chat-log" id="chat-log"></div>
+      <div class="chat-quick" id="chat-quick"></div>
+      <form id="chat-form" class="chat-form">
+        <span class="prompt">&gt;</span>
+        <input id="chat-input" type="text" placeholder="ask about summer…" autocomplete="off" />
+        <button type="submit" aria-label="send">➤</button>
+      </form>
+    </section>
+
+    <!-- ---- Rumi: single static corner mascot + chat trigger ---- -->
+    <div id="shiba" class="shiba" title="click to chat!" role="button" tabindex="0" aria-label="Chat with Rumi the Shiba">
+      <div class="shiba-body">
+        <img class="shiba-pose" src="assets/rumi-sit.png" alt="Rumi the Shiba" />
+        <span class="shiba-bubble">woof! chat?</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Dock ===== -->
+  <nav class="dock">
+    <button class="dock-btn" data-toggle="win-term" title="terminal"><span>⌘</span><b>terminal</b></button>
+    <button class="dock-btn" data-toggle="win-about" title="about"><span>☀️</span><b>01 about</b></button>
+    <button class="dock-btn" data-toggle="win-research" title="publications"><span>📚</span><b>02 papers</b></button>
+    <button class="dock-btn" data-toggle="win-design" title="ai-design"><span>🎨</span><b>03 design</b></button>
+    <span class="dock-div"></span>
+    <button class="dock-btn" data-toggle="win-chat" title="chat with Rumi"><span>🐕</span><b>rumi</b></button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+/* ============ Theme ============ */
+:root{
+  --lemon:#ffd60a;
+  --lemon-deep:#f5b800;
+  --lemon-soft:#fff3b0;
+  --paper:#fffdf3;
+  --ink:#2a2410;
+  --ink-soft:#7a7048;
+  --line:#1c1a12;          /* hard outline for the "toy OS" look */
+  --line-soft:#e7d894;
+  --coral:#f0884b;         /* design-system 10% pop */
+  --coral-deep:#e0702e;
+  --win-shadow:6px 6px 0 rgba(28,26,18,.9);
+  --mono:"JetBrains Mono", ui-monospace, monospace;       /* terminal scenes */
+  --disp:"Fredoka", "Noto Sans SC", system-ui, sans-serif; /* brand display (design system) */
+  --disp-heavy:"Baloo 2", "Fredoka", system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:var(--mono);
+  color:var(--ink);
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 18% 22%, #fff6c2, transparent 42%),
+    radial-gradient(circle at 82% 78%, #ffe65a55, transparent 46%),
+    #fff7cf;
+  background-attachment:fixed;
+}
+/* dotted wallpaper grid */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(28,26,18,.10) 1.4px, transparent 1.4px);
+  background-size:26px 26px;
+}
+a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--lemon-deep);text-underline-offset:3px}
+a:hover{color:var(--lemon-deep)}
+
+/* ============ Menu bar ============ */
+.menubar{
+  position:fixed;top:0;left:0;right:0;height:38px;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;font-size:.82rem;
+  background:var(--lemon);border-bottom:2px solid var(--line);
+}
+.mb-left{display:flex;align-items:center;gap:8px}
+.mb-logo{font-size:1rem}
+.mb-sep{opacity:.5}
+.mb-app{background:var(--ink);color:var(--lemon);padding:1px 8px;border-radius:5px;font-size:.72rem}
+.mb-right{display:flex;align-items:center;gap:14px}
+.mb-net{color:#1f7a3d;font-weight:700}
+
+/* ============ Boot / launch screen ============ */
+.boot{
+  position:fixed;inset:0;z-index:500;display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 38%, #fff3a8, var(--lemon) 68%, var(--lemon-deep));
+  transition:opacity .5s ease, visibility .5s;
+}
+.boot.off{opacity:0;visibility:hidden;pointer-events:none}
+.boot-monitor{
+  width:min(520px,88vw);
+  background:#1c1a12;border:3px solid var(--line);border-radius:20px;
+  padding:22px 22px 16px;box-shadow:10px 10px 0 rgba(28,26,18,.45);
+  position:relative;
+}
+.boot-screen{
+  background:#0f0e08;border-radius:12px;padding:40px 26px;text-align:center;
+  color:#fbe98a;position:relative;overflow:hidden;
+  background-image:repeating-linear-gradient(0deg, rgba(255,214,10,.05) 0 2px, transparent 2px 4px);
+}
+.boot-logo{font-size:2.6rem;margin-bottom:6px;animation:bob .8s ease-in-out infinite}
+.boot-title{font-family:var(--disp);font-size:2.2rem;color:var(--lemon);letter-spacing:.02em}
+.boot-ver{font-size:.74rem;color:#b9ac6a;margin:4px 0 18px}
+.boot-line{font-size:.8rem;color:#7ee29a;margin-bottom:22px}
+.boot-line .blink{animation:blink 1s steps(1) infinite}
+.boot-btn{
+  font-family:var(--mono);font-size:1rem;font-weight:700;cursor:pointer;
+  background:var(--lemon);color:var(--ink);border:2px solid var(--lemon);
+  border-radius:10px;padding:12px 30px;box-shadow:0 0 0 0 var(--lemon);
+  transition:transform .1s, box-shadow .25s;
+}
+.boot-btn:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(255,214,10,.7)}
+.boot-btn:active{transform:translateY(1px)}
+.boot-hint{font-size:.68rem;color:#b9ac6a;margin-top:14px}
+.boot-base{
+  width:120px;height:14px;margin:14px auto 0;
+  background:#1c1a12;border:3px solid var(--line);border-top:none;
+  border-radius:0 0 10px 10px;position:relative;
+}
+.boot-base::after{content:"";position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);width:170px;height:10px;background:#1c1a12;border:3px solid var(--line);border-radius:8px}
+
+/* ============ Desktop ============ */
+.desktop{position:fixed;inset:38px 0 0 0;z-index:1}
+.window[hidden]{display:none!important}
+
+/* ============ Windows ============ */
+.window{
+  position:absolute;
+  background:var(--paper);
+  border:2px solid var(--line);
+  border-radius:12px;
+  box-shadow:var(--win-shadow);
+  max-height:78vh;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+.window-bar{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 12px;cursor:grab;user-select:none;
+  background:linear-gradient(180deg,var(--lemon),var(--lemon-deep));
+  border-bottom:2px solid var(--line);
+}
+.window-bar:active{cursor:grabbing}
+.window-title{font-weight:700;font-size:.8rem;letter-spacing:.02em}
+.bar-spacer{flex:1}
+.tl{display:flex;gap:6px}
+.tl i{width:13px;height:13px;border-radius:50%;border:1.5px solid var(--line);display:block}
+.tl i.r{background:#ff6b5e}
+.tl i.y{background:#ffd60a}
+.tl i.g{background:#4ecb71}
+.tl i.r[data-close]{cursor:pointer}
+.tl i.r[data-close]:hover{filter:brightness(1.1) saturate(1.3)}
+
+.window-body{padding:18px 20px;overflow-y:auto;font-size:.9rem;line-height:1.65}
+.window-body p+p{margin-top:12px}
+.win-h{font-family:var(--disp);font-size:1.3rem;margin-bottom:12px;color:var(--ink)}
+.win-sub{font-family:var(--mono);font-size:.82rem;color:var(--ink-soft);margin:18px 0 8px;letter-spacing:.04em}
+.muted{color:var(--ink-soft)}
+
+.kv{list-style:none;display:flex;flex-direction:column;gap:8px}
+.kv li{font-size:.86rem}
+.kv li span{display:inline-block;min-width:52px;font-weight:700;color:var(--lemon-deep)}
+
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tags span{
+  background:var(--lemon-soft);border:1.5px solid var(--line);
+  padding:4px 10px;border-radius:6px;font-size:.74rem;
+}
+
+/* ============ Terminal window ============ */
+.win-term{}
+.term-body{background:#1c1a12;color:#fbe98a;font-size:.86rem;padding:16px 18px}
+.term-out{font-family:var(--mono);white-space:pre-wrap;line-height:1.7;margin:0}
+.term-out .ok{color:#7ee29a}
+.term-out .acc{color:var(--lemon)}
+.term-out .dim{color:#b9ac6a}
+.cursor{display:inline-block;width:9px;height:1.05em;background:var(--lemon);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.term-launch{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+
+.lbtn{
+  font-family:var(--mono);font-size:.8rem;cursor:pointer;
+  background:var(--lemon);color:var(--ink);
+  border:1.5px solid var(--line);border-radius:7px;padding:7px 13px;
+  box-shadow:2px 2px 0 var(--line);transition:transform .08s,box-shadow .08s;
+  text-decoration:none;display:inline-block;
+}
+.lbtn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--line);color:var(--ink)}
+.lbtn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--line)}
+
+/* ============ Publications ============ */
+.scholar-stats{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.stat{border:1.5px solid var(--line);border-radius:8px;padding:8px 14px;text-align:center;background:var(--lemon-soft)}
+.stat b{display:block;font-family:var(--disp);font-size:1.4rem;color:var(--ink)}
+.stat span{font-size:.68rem;color:var(--ink-soft)}
+.scholar-link{margin-left:auto}
+.pub-year{font-family:var(--disp);font-size:1.05rem;margin:18px 0 8px;color:var(--ink)}
+.pub-year::before{content:"▍ ";color:var(--lemon-deep)}
+.pub{border:1.5px solid var(--line);border-left:5px solid var(--lemon);border-radius:8px;padding:11px 14px;margin-bottom:9px;background:#fff;transition:transform .1s}
+.pub:hover{transform:translateX(3px)}
+.pub-title{font-weight:700;font-size:.85rem;line-height:1.4}
+.pub-meta{font-size:.76rem;color:var(--ink-soft);margin-top:4px}
+.pub-cites{display:inline-block;margin-left:6px;font-size:.68rem;font-weight:700;background:var(--lemon-soft);border:1px solid var(--line-soft);padding:0 7px;border-radius:999px}
+
+/* ============ AI design ============ */
+.design-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:14px}
+.design-card{border:1.5px solid var(--line);border-radius:10px;padding:14px;background:#fff;box-shadow:2px 2px 0 var(--line);transition:transform .1s}
+.design-card:hover{transform:translateY(-3px)}
+.design-card.placeholder{border-style:dashed}
+.design-thumb{height:70px;border-radius:7px;display:grid;place-items:center;font-size:2rem;background:linear-gradient(135deg,var(--lemon-soft),#fff);margin-bottom:10px}
+.design-card h3{font-family:var(--mono);font-size:.82rem;margin-bottom:3px}
+.design-card p{font-size:.72rem;color:var(--ink-soft)}
+
+/* ============ Chat window ============ */
+.win-chat{height:440px;max-height:72vh}
+.chat-bar{background:linear-gradient(180deg,#ffe35a,var(--lemon-deep))}
+.chat-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:9px;background:#fffdf3}
+.msg{max-width:84%;padding:9px 12px;border:1.5px solid var(--line);font-size:.82rem;line-height:1.5;border-radius:12px}
+.msg.bot{align-self:flex-start;background:#fff;border-bottom-left-radius:3px}
+.msg.user{align-self:flex-end;background:var(--lemon);border-bottom-right-radius:3px}
+.chat-quick{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 8px;background:#fffdf3}
+.chat-quick button{font-family:var(--mono);background:var(--lemon-soft);border:1.5px solid var(--line);border-radius:6px;padding:5px 9px;font-size:.7rem;cursor:pointer}
+.chat-quick button:hover{background:var(--lemon)}
+.chat-form{display:flex;align-items:center;gap:6px;padding:10px;border-top:2px solid var(--line);background:var(--paper)}
+.chat-form .prompt{font-weight:700;color:var(--lemon-deep)}
+.chat-form input{flex:1;font-family:var(--mono);font-size:.82rem;border:1.5px solid var(--line);border-radius:7px;padding:8px 11px;outline:none;background:#fff}
+.chat-form input:focus{box-shadow:2px 2px 0 var(--lemon)}
+.chat-form button{font-family:var(--mono);background:var(--lemon);border:1.5px solid var(--line);width:38px;border-radius:7px;cursor:pointer}
+.chat-form button:hover{background:var(--lemon-deep)}
+
+/* ============ Rumi (static corner mascot + chat trigger) ============ */
+.shiba{position:fixed;bottom:86px;left:24px;z-index:120;cursor:pointer;width:120px}
+.shiba-pose{width:120px;height:auto;display:block;image-rendering:pixelated;transform:scaleX(-1);filter:drop-shadow(2px 3px 0 rgba(28,26,18,.25))}
+.shiba-body{position:relative}
+.shiba-bubble{position:absolute;top:-12px;right:-6px;background:#fff;border:2px solid var(--line);color:var(--ink);font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap;opacity:0;transition:opacity .2s}
+.shiba:hover .shiba-bubble{opacity:1}
+.leg{transform-origin:top center}
+.leg-fl,.leg-br{animation:gallop .34s linear infinite}
+.leg-fr,.leg-bl{animation:gallop .34s linear infinite;animation-delay:.17s}
+.tail{transform-origin:bottom right;animation:wag .4s ease-in-out infinite}
+@keyframes run-across{0%{left:-150px}100%{left:110%}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes gallop{0%{transform:rotate(28deg)}50%{transform:rotate(-28deg)}100%{transform:rotate(28deg)}}
+@keyframes wag{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(12deg)}}
+.shiba.parked{animation:none;left:24px;bottom:86px}
+.shiba.parked .shiba-body{animation:none}
+.shiba.parked .leg,.shiba.parked .tail{animation-play-state:paused}
+
+/* ============ Dock ============ */
+.dock{
+  position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:150;
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;
+  background:rgba(255,253,243,.85);backdrop-filter:blur(8px);
+  border:2px solid var(--line);border-radius:16px;box-shadow:var(--win-shadow);
+}
+.dock-div{width:2px;height:30px;background:var(--line-soft)}
+.dock-btn{
+  font-family:var(--mono);cursor:pointer;background:transparent;border:none;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:4px 8px;border-radius:10px;transition:transform .12s,background .12s;
+}
+.dock-btn span{font-size:1.3rem;line-height:1}
+.dock-btn b{font-size:.6rem;font-weight:700;color:var(--ink-soft)}
+.dock-btn:hover{transform:translateY(-5px);background:var(--lemon-soft)}
+.dock-btn.active{background:var(--lemon)}
+.dock-btn.active b{color:var(--ink)}
+
+/* ============ Window pop ============ */
+.window.opening{animation:pop .16s ease}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* ============ Mobile ============ */
+@media (max-width:760px){
+  body{overflow:auto}
+  .desktop{position:static;inset:auto;padding:54px 10px 150px}
+  .window{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;max-height:none;margin:0 auto 16px;max-width:560px}
+  .window-bar{cursor:default}
+  .win-chat{height:420px}
+  .shiba{bottom:96px;width:88px}
+  .shiba-pose{transform:scaleX(-1) scale(.78);transform-origin:center bottom}
+  .dock{gap:2px;padding:6px;flex-wrap:wrap;justify-content:center;max-width:96vw}
+  .dock-btn b{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .shiba{animation:none;left:24px}
+  .shiba-body,.leg,.tail,.shiba-strip{animation:none}
+}
