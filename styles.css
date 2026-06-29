@@ -52,42 +52,56 @@ a:hover{color:var(--lemon-deep)}
 
 /* ============ Boot / launch screen ============ */
 .boot{
-  position:fixed;inset:0;z-index:500;display:grid;place-items:center;
-  background:radial-gradient(circle at 50% 38%, #fff3a8, var(--lemon) 68%, var(--lemon-deep));
+  position:fixed;inset:0;z-index:500;display:grid;place-items:center;padding:20px;
+  background:radial-gradient(circle at 50% 32%, #fff7c2, var(--lemon) 70%, var(--lemon-deep));
   transition:opacity .5s ease, visibility .5s;
 }
 .boot.off{opacity:0;visibility:hidden;pointer-events:none}
-.boot-monitor{
-  width:min(520px,88vw);
-  background:#1c1a12;border:3px solid var(--line);border-radius:20px;
-  padding:22px 22px 16px;box-shadow:10px 10px 0 rgba(28,26,18,.45);
+
+/* ---- Tablet device ---- */
+.tablet{
   position:relative;
+  width:min(680px,92vw);
+  aspect-ratio:4 / 3;
+  background:linear-gradient(150deg,#332e26,#141109);
+  border-radius:36px;
+  padding:16px;
+  box-shadow:0 34px 70px rgba(28,26,18,.45), inset 0 0 0 2px rgba(255,255,255,.05);
 }
-.boot-screen{
-  background:#0f0e08;border-radius:12px;padding:40px 26px;text-align:center;
-  color:#fbe98a;position:relative;overflow:hidden;
-  background-image:repeating-linear-gradient(0deg, rgba(255,214,10,.05) 0 2px, transparent 2px 4px);
+.tablet-cam{
+  position:absolute;top:50%;left:7px;transform:translateY(-50%);
+  width:8px;height:8px;border-radius:50%;background:#0b0b08;box-shadow:inset 0 0 0 2px #3c372d;
 }
-.boot-logo{font-size:2.6rem;margin-bottom:6px;animation:bob .8s ease-in-out infinite}
-.boot-title{font-family:var(--disp);font-size:2.2rem;color:var(--lemon);letter-spacing:.02em}
-.boot-ver{font-size:.74rem;color:#b9ac6a;margin:4px 0 18px}
-.boot-line{font-size:.8rem;color:#7ee29a;margin-bottom:22px}
-.boot-line .blink{animation:blink 1s steps(1) infinite}
+.tablet-screen{
+  width:100%;height:100%;border-radius:22px;overflow:hidden;position:relative;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 28% 18%, #fff6c0, transparent 46%),
+    radial-gradient(circle at 78% 82%, #ffe24f, transparent 52%),
+    linear-gradient(160deg,#ffea8c,var(--lemon));
+}
+.tablet-screen::after{           /* glass glare */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(118deg, rgba(255,255,255,.4) 0%, transparent 32%);opacity:.55;
+}
+.lock-time{font-family:var(--disp);font-weight:700;font-size:clamp(2.8rem,9vw,4.8rem);line-height:1}
+.lock-date{font-size:.9rem;font-weight:600;color:var(--ink-soft);margin-bottom:clamp(14px,3vh,26px)}
+.lock-logo{font-size:2.1rem;animation:bob 1.4s ease-in-out infinite}
+.lock-title{font-family:var(--disp);font-weight:700;font-size:1.45rem;margin-top:2px}
+.lock-sub{font-size:.8rem;color:var(--ink-soft);margin-bottom:clamp(14px,2.5vh,22px)}
 .boot-btn{
-  font-family:var(--mono);font-size:1rem;font-weight:700;cursor:pointer;
-  background:var(--lemon);color:var(--ink);border:2px solid var(--lemon);
-  border-radius:10px;padding:12px 30px;box-shadow:0 0 0 0 var(--lemon);
-  transition:transform .1s, box-shadow .25s;
+  font-family:var(--disp);font-weight:600;font-size:1rem;cursor:pointer;z-index:2;
+  background:var(--ink);color:var(--lemon);border:none;border-radius:999px;padding:12px 32px;
+  box-shadow:0 6px 16px rgba(28,26,18,.3);transition:transform .12s, box-shadow .2s;
 }
-.boot-btn:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(255,214,10,.7)}
+.boot-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(28,26,18,.4)}
 .boot-btn:active{transform:translateY(1px)}
-.boot-hint{font-size:.68rem;color:#b9ac6a;margin-top:14px}
-.boot-base{
-  width:120px;height:14px;margin:14px auto 0;
-  background:#1c1a12;border:3px solid var(--line);border-top:none;
-  border-radius:0 0 10px 10px;position:relative;
+.lock-hint{font-size:.68rem;color:var(--ink-soft);margin-top:12px;opacity:.8}
+.tablet-home{
+  position:absolute;left:50%;bottom:10px;transform:translateX(-50%);
+  width:96px;height:5px;border-radius:3px;background:rgba(42,36,16,.45);z-index:2;
 }
-.boot-base::after{content:"";position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);width:170px;height:10px;background:#1c1a12;border:3px solid var(--line);border-radius:8px}
 
 /* ============ Desktop ============ */
 .desktop{position:fixed;inset:38px 0 0 0;z-index:1}

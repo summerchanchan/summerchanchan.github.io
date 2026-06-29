@@ -11,19 +11,21 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- ===== Boot / launch screen ===== -->
+  <!-- ===== Boot / launch screen (tablet lock screen) ===== -->
   <div class="boot" id="boot" role="button" tabindex="0" aria-label="Launch summer.os">
-    <div class="boot-monitor">
-      <div class="boot-screen">
-        <div class="boot-logo">🌻</div>
-        <h1 class="boot-title">summer.os</h1>
-        <p class="boot-ver">v1.0 — personal operating system</p>
-        <p class="boot-line"><span class="blink">●</span> system ready</p>
-        <button class="boot-btn" id="boot-btn">▶ LAUNCH</button>
-        <p class="boot-hint">click to boot · or press Enter</p>
+    <div class="tablet">
+      <span class="tablet-cam"></span>
+      <div class="tablet-screen">
+        <div class="lock-time" id="lock-time">--:--</div>
+        <div class="lock-date" id="lock-date">&nbsp;</div>
+        <div class="lock-logo">🌻</div>
+        <h1 class="lock-title">summer.os</h1>
+        <p class="lock-sub">Xiayu “Summer” Chen · personal site</p>
+        <button class="boot-btn" id="boot-btn">tap to enter ▸</button>
+        <p class="lock-hint">click anywhere · or press Enter</p>
+        <span class="tablet-home"></span>
       </div>
     </div>
-    <div class="boot-base"></div>
   </div>
 
   <!-- ===== Top menu bar ===== -->

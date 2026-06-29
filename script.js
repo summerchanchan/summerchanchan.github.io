@@ -7,8 +7,12 @@ const isMobile = () => window.matchMedia("(max-width:760px)").matches;
 /* ---------- Clock ---------- */
 function tick(){
   const d = new Date();
-  document.getElementById("clock").textContent =
-    d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
+  const t = d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
+  document.getElementById("clock").textContent = t;
+  const lt = document.getElementById("lock-time");
+  if(lt) lt.textContent = t;
+  const ld = document.getElementById("lock-date");
+  if(ld) ld.textContent = d.toLocaleDateString([], {weekday:"long", month:"long", day:"numeric"});
 }
 tick(); setInterval(tick, 10000);
 
